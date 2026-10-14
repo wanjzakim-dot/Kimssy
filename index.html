@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIPCA Kanderendu Church App 2026</title>
+    <style>
+        :root {
+            --primary: #1b4332;
+            --secondary: #2d6a4f;
+            --accent: #d4af37;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: var(--dark);
+            padding-bottom: 70px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .header-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: white;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .time-banner {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: var(--primary);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 2px solid var(--accent);
+            z-index: 1000;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 20%;
+        }
+
+        nav button.active {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .container {
+            padding: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .program-item {
+            display: flex;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .program-num {
+            font-weight: bold;
+            color: var(--accent);
+            width: 25px;
+        }
+
+        .lang-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            margin-right: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        .author-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 15px auto;
+            border: 3px solid var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-btn {
+            background: var(--light);
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: bold;
+            font-size: 0.85rem;
+            border: 1px solid #ddd;
+            flex: 1 1 40%;
+            text-align: center;
+        }
+
+        .theme-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 15px;
+            border: 2px solid var(--accent);
+        }
+
+        .reading-day {
+            background: #e9ecef;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: var(--primary);
+        }
+
+        .reading-ref {
+            margin-left: 10px;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Screenshot_20261014_194052_Google.jpg" alt="AIPCA Logo" class="header-logo" onerror="this.src='https://via.placeholder.com/90?text=AIPCA'">
+        <h1>AIPCA Kanderendu Church</h1>
+        <div class="subtitle">Location: Kanderendu Town near Makomboki Youth Polytechnic</div>
+        <div class="subtitle">Address: P.O. Box 117, Kangari</div>
+    </header>
+
+    <div class="time-banner">
+        🕒 Local Time: <span id="clock">Loading...</span> | Year 2026
+    </div>
+
+    <div class="container">
+
+        <!-- TAB 1: HOME & PROGRAM -->
+        <div id="home" class="tab-content active">
+            <div class="theme-box">
+                <h3>THEME OF THE YEAR 2026</h3>
+                <p><em>"Obedience Breaks Walls"</em> — Joshua 6:15–21</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Service Timings</h2>
+                <p><strong>Morning Devotion:</strong> 8:00 AM – 9:30 AM</p>
+                <p><strong>Main Service:</strong> 9:30 AM – 12:30 PM</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Main Service Program</h2>
+                <div class="program-item"><span class="program-num">1.</span> Morning prayers / devotion</div>
+                <div class="program-item"><span class="program-num">2.</span> Liturgy</div>
+                <div class="program-item"><span class="program-num">3.</span> 1st Reading & 2nd Reading</div>
+                <div class="program-item"><span class="program-num">4.</span> Liturgical prayers</div>
+                <div class="program-item"><span class="program-num">5.</span> Head counts</div>
+                <div class="program-item"><span class="program-num">6.</span> Sermon / Word of God</div>
+                <div class="program-item"><span class="program-num">7.</span> Offerings (10% Tithe and Thanksgiving)</div>
+                <div class="program-item"><span class="program-num">8.</span> Leaders (Chairlady, Chairman)</div>
+                <div class="program-item">
+                    <span class="program-num">9.</span> 
+                    <div>
+                        <strong>Presentations:</strong>
+                        <ul>
+                            <li>Sunday School</li>
+                            <li>Brigade</li>
+                            <li>Men / Women Council</li>
+                            <li>Church Choir</li>
+                            <li>Hosana</li>
+                            <li>Medium</li>
+                            <li>Youths</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="program-item"><span class="program-num">10.</span> Praise and worship led by Church Praise Team</div>
+                <div class="program-item"><span class="program-num">11.</span> Benediction</div>
+            </div>
+        </div>
+
+        <!-- TAB 2: LITURGY -->
+        <div id="liturgy" class="tab-content">
+            <div style="text-align: center; margin-bottom: 10px;">
+                <button class="lang-btn active" onclick="switchLang('kikuyu')">Gĩkũyũ</button>
+                <button class="lang-btn" onclick="switchLang('english')">English</button>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Thaburi ya 100 / Psalm 100</h2>
+                <div class="lang-kikuyu">
+                    <p>Anirirai Jehova, inyui mabururi o mothe, tungatagirai Jehova mukenete thii mbere yake mukiinaga. Menyai ati Jehova niwe Ngai, niwe watuumbire, na ithui turi ake, turi andu ake, na turi mburi cia ruuru rwake. Tonyerai ihingo ciake mukimugathaga, mutonyere nyumba ciake thiini, mumugathe, na ningi mukumie Ritwa riake. Ni undu Jehova ni mwega, na tha ciake ni cia tene na tene, na ni wa kwihokwo ni njiaro ciothe. Ithe witu arogocwo na Muriu, o na Roho Mutheru. O ta uria gwatarii kiambiriria, o na uria gutarii riu, na uria gugatuika hingo ciothe, tene na tene. Amen.</p>
+                </div>
+                <div class="lang-english" style="display:none;">
+                    <p>Shout for joy to the Lord, all the earth. Worship the Lord with gladness; come before him with joyful songs. Know that the Lord is God. It is he who made us, and we are his; we are his people, the sheep of his pasture. Enter his gates with thanksgiving and his courts with praise; give thanks to him and praise his name. For the Lord is good and his love endures forever; his faithfulness continues through all generations. Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now, and ever shall be, world without end. Amen.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Witikio wa Atumwo / Apostles' Creed</h2>
+                <div class="lang-kikuyu">
+                    <p>Ni njitikitie Ngai Ithe Mwene hinya woothe, Mumbi wa Iguru na thi, na ngetikia Jesu Kristo Muru wake na Mumwe, Mwathani witu waciarirwo ni Muiritu wetagwo Mariamu, wagiire ihu ni undu wa Roho Mutheru, akinyarirwo hindi ya Pointio Pilato, akiambwo muti iguru, agikua agithikwo, agiikuruka kwa ngoma. Muthenya wa gatatu akiriuka, akiuma kuri akuu, akihaica iguru, na riu aikaire guoko-ini kwa urio kwa Ngai Mwene Hinya wothe, ni akoima kuo, oke guku aciriithie aria me muoyo na aria makuite. Na ningi ni njitikitie Roho Mutheru, naguo kanitha Mutheru wa kundu guothe, naguo uiguano wa andu aria athem, nakuo kuoherwo kwa mehia, nakuo kuriuka kwa mwiri, naguo muoyo utagathira. Amen.</p>
+                </div>
+                <div class="lang-english" style="display:none;">
+                    <p>I believe in God, the Father Almighty, Creator of heaven and earth. I believe in Jesus Christ, his only Son, our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried; he descended to the dead. On the third day he rose again; he ascended into heaven, he is seated at the right hand of the Father, and he will come to judge the living and the dead. I believe in the Holy Spirit, the holy catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and the life everlasting. Amen.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Witikio wa Ngwataniro Theru / Nicene Creed</h2>
+                <p>Ni njitikitie Ngai Ithe Mwene hinya woothe, mumbi wa Iguru na thi, na wa indo ciothe cionekaga na iria itonekaga, na ngetikia Mwathani umwe Jesu Kristo, Muru wa Ngai uria waciarirwo niwe na mumwe, waciarirwo ni Ithe mbere ya mindi na mindi. Ngai umiite Ngai Utheri uumite Utheri Ngai wa ma uumite Ngai wa ma uria waciarirwo na ti kuumbwo ombirwo ningi muthemba wake na wa ithe ni muthemba omwe kuna. Nacio indo ciothe ciombirwo niwe uria waikurukire akiuma Iguru ni undu witu andu a thini getha tuhonokio akigia na mwiri, agiciarwo ni Muiritu wetagwo Mariamu na undu wa hinya wa Roho Mutheru agituika Mundu na ningi akiambwo muti iguru ni undu witu hindi ya Pointio Pilato akinyarirwo agithikwo muthenya wa gatatu akiriuka o ta uria kwandikitwo maandiko-ini Akihaica Iguru na riu aikaire guoko-ini kwa urio kwa Ngai ithe witu nake ni agacoka na unene acirithie aria me muoyo ona aria makuite naguo uthamaki wake ndugathira. Na ningi ni njitikitie Roho Mutheru Mwathani witu na muheani muoyo uumite kuri Ithe witu na uria hamwe na ithe witu uturagirio ndu na akagocwo/na uria waaragia na tunua twa Anabii na ngetikia kanitha umwe uria wi kundu guothe na ni umwe na uria wa atumwo na ngetikia ati ni kuri ubatithio o umwe wa kweheria mehia na ningi ni njetereire kuriuka kwa akuu/na muoyo wa hindi iria igoka. Amen.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Thaburi 95 / Psalm 95</h2>
+                <p>Ukani tuinire Jehova, tukenete, twanirire ihiga ria gutuhonokia. Ni tuthii turugame mbere ya Jehova, tumugathe. Tumwanirire na thaburi tukenete. Ni undu Jehova ni we Ngai munene na niwe muthamaki munene gukira Ngai ciothe cianda ciothe ii moko-ini make o naguo hinya wa irima ui wake iria rinene ni riake na niwe wariumbire moko make nimo mombire thi ino. Ukai tumuhoe, tumuinamirire na tuturitie ndu Jehova mutuumbi. Ni undu niwe Ngai witu na ithui turi mugambo wake tigai kumia ngoro cianyu ota uria mwekire kuu meriba ona kuu Masa weru-ini. Hindi iria maithe manyu mangeririe ningi makinduiria na makiona wira wakwa. Ngiigua uuru ni undu wa ruciaro ruru miaka mirongo ina ngikiuga Aya ni andu mahitagia ngoro-ini ciao na matiui njira ciakwa. Ni undu ucio ngihita ndakariite ngiuga matigatonya kihuruko-ini giakwa. Ithe witu arogocwo ona Muriu! O na Roho Mutheru. Ota uria gwatarii, kiambiriria/na uria gutarii riu na uria gugatuika/hingo ciothe! Tene na tene Amen.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Gloria</h2>
+                <p>Kugoocwo kurogia kwi Ngai o Iguru, nakuo thi kugie na thayu, andu nao maiguane, ni tugukugooca, ningi ni tugukugatha, na ni tuguguturiria ndu, ni tugugukumia, ni tugukwira athanda ni undu wa mwago waku munene, Wee Mwathani Ngai, Muthamaki wa Iguru, Ngai Ithe Mwene hinya wothe, Mwathani witu Jesu Kristo, Mwana uria waciarirwo wa Mumwe, Wee Mwathani Ngai, Gaturume ka Ngai, Muru wa Ithe Witu, Wee weheragia mehia ma andu a thi -ino, tuiguire tha+. Wee weheragia mehia ma andu a thi-ino, itikira ihoya ritu+. Wee uiakaraga guoko-ini kwa urio kwa Ngai ithe witu, tuiguire tha+ ni undu wee nowe mutheru, wee nowe Mwathani witu wiki, wee Kristo hamwe na Roho Mutheru, wi Iguru Muno muno unene-ini wa Ngai Ithe Witu. Amen.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Umburi wa Kirindi</h2>
+                <p>Ni nguumburira Ngai mwene hinya wothe, na kirindi giothe kia Iguru, nawe Mugathithi wakwa, ati ni njihitie muno, na gutarania na kwaria na gwika: ni wihia wakwa, ni wihia wakwa, ni wihia wakwa munene muno. Ni undu ucio ni nguhoya Ngai mwene hinya wothe anjiguire tha, nawe Mugathithi wakwa, uhoere kuri Mwathani Ngai witu.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Litania Nguhi</h2>
+                <p>Mwathani tuiguire tha. (x3)</p>
+                <p>Kristo tuiguire tha. (x3)</p>
+                <p>Mwathani tuiguire tha. (x3)</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Ihoya ria Rucini</h2>
+                <p>Mwathani ithe witu wa iguru, Wee Ngai Mwene hinya wothe nawe utuuraga tene na tene. Nawe ututuritie ugatukinyia kiambiriria kia muthenya uyu, tugitire umuthi na ndugatureke tugue mehia-ini, kana tukinye ugwati-ini ona uriku muthi uyu, no utume maundu mothe maria turika mekwo ota uria uriathaga na ningi twikage maria maagiriire mbere yaku hindi ciothe. Ni undu wa Jesu Kristo Mwathani witu. Amen.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Ihoya ria Kuhoera Atungati a Bururi</h2>
+                <p>Ngai Mwene hinya wothe, Wee uthamakagira nduriri ciothe, na ugaciatha kuringana na uria wonaga kwagiriire, twaguthaitha urore na tha ciaku President witu............. na a Minister ake, na andu aria angi othe maheetwo wira wa guthamakaga bururi-ini uyu, nigetha uhoti uria umaheete mauhuthagire hingo ciothe, niundu wa gutuuria thayu bururi-ini uyu witu, twakuhoya umonererie njira yaku magitungatira andu, magukenagie ma, na ningi ni getha kanitha waku mutheru uthereme. Ni undu wa Jesu Kristo Mwathani Witu. Amen.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Ihoya ria Kuhoera Atungatiri a Kanitha</h2>
+                <p>Ngai Mwene hinya wothe na wa hingo ciothe, Wee wiki wikaga maundu maria manene mageganagia, ni tuguguthaithira a Bishop aitu, na makiria Bishop witu................ wa.............. diocese, na andu aria maroraga maroho ma andu, na aria maroragwo nio umaikurukirie Roho waku maagire wega na ningi maitiririe ime riria ritathiraga ria kirathimo giaku nigetha mututhaithaniriri na mututeithia Jesu Kristo atiyo. Amen.</p>
+            </div>
+        </div>
+
+        <!-- TAB 3: LYRICS -->
+        <div id="lyrics" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">Lucy Nganga — Nĩ kwanĩrĩra nĩndakwanĩrĩire Ngai</h2>
+                <p><strong>About the Song:</strong> A powerful song of testimony and gratitude expressing how God turns tears into blessings and answer prayers despite opposition.</p>
+                <p style="margin-top:8px;"><em>"Nĩ kwanĩrĩra nĩndakwanĩrĩire Ngai<br>Makiuga nĩndĩranegena muno<br>Matioi nĩ ũhonio wakwa wokĩte<br>Na ndĩngĩakũrekerere ũthĩĩ o ũguo..."</em></p>
+                <p style="font-size:0.85rem; color:#666; margin-top:8px;">*(Note: You can find the full, licensed lyrics by searching for the song on Google).*</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Sammy Irungu — Kirathimo Giakwa & Niwikite Magegania</h2>
+                <p><strong>About the Songs:</strong> Songs highlighting God's faithful provision, referencing Elijah being fed by ravens, and praising God as Ebenezer and Jehovah Nissi.</p>
+                <p style="margin-top:8px;"><em>"Kĩrathimo gĩakwa, Ngai no agere<br>Njĩra o yothe angĩenda kũgera, Bata nĩ kĩnginyĩre<br>Na ningĩ nĩoĩ, Mũromo wa gwakwa<br>Tondũ ona ihuru rĩgĩtwara nyama, Rĩtiahĩtagia njĩra..."</em></p>
+                <p style="font-size:0.85rem; color:#666; margin-top:8px;">*(Note: You can find the full, licensed lyrics by searching for the song on Google).*</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Chege wa Willy — Guoko Kwa Jehova / Jesu Jesu / Mwana Mwende</h2>
+                <p><strong>About the Songs:</strong> Worshipful compositions testifying to God's mighty hand at Jordan and against Goliath, exaltation of the Name of Jesus, and celebrating our adoption as beloved children of God.</p>
+                <p style="margin-top:8px;"><em>"Guoko kwa Jehovah kwĩ wĩra-inĩ<br>Maũndũ mothe marũgamaga<br>Huho na makũmbĩ ikarũgama<br>Ciathĩkĩre guoko kwa Ngai..."</em></p>
+                <p style="font-size:0.85rem; color:#666; margin-top:8px;">*(Note: You can find the full, licensed lyrics by searching for the song on Google).*</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Naomi Karanja — Kihinga Kiahia / Reke Guoko / Muhotoro</h2>
+                <p><strong>About the Songs:</strong> Deep spiritual songs reflecting on Moses at the burning bush, trusting God's guiding hand, and celebrating victory (Muhotoro) through divine strength.</p>
+                <p style="margin-top:8px;"><em>"Reke guoko gwaku kũndware<br>Na kũnginyie kũrĩa gũtarĩ ũgwati<br>Njegeke-inĩ yaku ndingĩona ũru<br>Ndĩrĩsimilaga ndĩhithĩte ho..."</em></p>
+                <p style="font-size:0.85rem; color:#666; margin-top:8px;">*(Note: You can find the full, licensed lyrics by searching for the song on Google).*</p>
+            </div>
+        </div>
+
+        <!-- TAB 4: CALENDAR & READINGS -->
+        <div id="calendar" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">October 2026 Readings</h2>
+
+                <div class="reading-day">October 4, 2026 — 1st Sunday (Theme: "Obedience Breaks Walls")</div>
+                <div class="reading-ref">📖 1st Reading: Joshua 6:15–21</div>
+                <div class="reading-ref">📖 2nd Reading: Luke 17:11–19</div>
+                <div class="reading-ref">📖 3rd Reading: 1 Samuel 15:21–23</div>
+
+                <div class="reading-day">October 11, 2026 — 2nd Sunday (Brigade's Day)</div>
+                <div class="reading-ref">📖 1st Reading: Hebrews 6:10</div>
+                <div class="reading-ref">📖 2nd Reading: Psalm 122:1</div>
+
+                <div class="reading-day">October 18, 2026 — 3rd Sunday (Medium Choir Day)</div>
+                <div class="reading-ref">📖 1st Reading: Isaiah 44:28 – 45:1, 4, 13a</div>
+                <div class="reading-ref">📖 2nd Reading: 1 Thessalonians 1:1–9</div>
+                <div class="reading-ref">📖 Gospel: Matthew 21:45 – 22:15–22</div>
+
+                <div class="reading-day">October 25, 2026 — 4th Sunday</div>
+                <div class="reading-ref">📖 1st Reading: Exodus 22:20–26</div>
+                <div class="reading-ref">📖 2nd Reading: 1 Thessalonians 1:5c–10</div>
+                <div class="reading-ref">📖 Gospel: Matthew 22:34–40</div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Year 2026 Calendar & Events</h2>
+                <ul>
+                    <li><strong>February:</strong> Fasting Month</li>
+                    <li><strong>March:</strong> Good Friday & Easter Monday</li>
+                    <li><strong>April 2, 2026:</strong> Annual Holy Oil Consecration Ceremony at AIPCA Kagere (Nyeri County / Mukaro South Diocese), presided over by His Grace Presiding Archbishop Samson Muthuri. Also Palm Sunday.</li>
+                    <li><strong>May:</strong> Pentecostal Celebrations</li>
+                    <li><strong>July:</strong> Men's Conference</li>
+                    <li><strong>August 11–14, 2026:</strong> AIPCA National Women Conference at Karoti Girls (Theme: "Arise and Build"). Also Diocese Youth Conference & Youth Kesha at AIPCA Giatha Church.</li>
+                    <li><strong>November:</strong> 🌟 Annual Church Main Harambee</li>
+                    <li><strong>December:</strong> National Youth Conference, Christmas Celebration, & Crossover Youth Kesha</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB 5: HISTORY & DEVELOPER -->
+        <div id="about" class="tab-content">
+            <div class="card">
+                <h2 class="card-title">AIPCA Tri-Bar Cross</h2>
+                <p><strong>Top Bar:</strong> Inscribed with “INRI” (Jesus of Nazareth, King of the Jews).</p>
+                <p><strong>Middle Bar:</strong> Horizontal beam where Christ’s hands were nailed.</p>
+                <p><strong>Slanted Bottom Bar:</strong> Footrest tilted as Jesus moved in pain when pierced by the spear.</p>
+                <p><strong>Three Beams:</strong> Symbolizes the Holy Trinity (Father, Son, Holy Spirit).</p>
+                <p><strong>Seven Points:</strong> Represents Christ's seven final statements on the Cross.</p>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Church History</h2>
+                <p>Founded in the 1920s-1930s during the Kikuyu independent movement. Banned during the Mau Mau freedom struggle in 1952, and officially re-established post-independence, taking the name AIPCA in 1970.</p>
+            </div>
+
+            <div class="card" style="text-align: center;">
+                <h2 class="card-title">App Developer</h2>
+                <img src="1739037223123.jpg" alt="Zakayo Kimani" class="author-img" onerror="this.src='https://via.placeholder.com/120?text=Developer'">
+                <h3>Zakayo Kimani</h3>
+                <p style="margin-top: 5px; font-size: 0.9rem;">Zakayo Kimani is a young and dedicated follower of the AIPCA church since birth. He is a scientist by profession, a software expert, and an alumnus of JKUAT.</p>
+                
+                <div class="social-links">
+                    <a href="tel:0725109639" class="social-btn">📞 0725109639</a>
+                    <a href="#" class="social-btn">📘 FB: Zack Kimani</a>
+                    <a href="#" class="social-btn">🎵 TikTok: Zakayo Live Keys</a>
+                    <a href="#" class="social-btn">📸 IG: Zack Kimani</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <button class="active" onclick="showTab('home', this)">🏠<br>Home</button>
+        <button onclick="showTab('liturgy', this)">📜<br>Liturgy</button>
+        <button onclick="showTab('lyrics', this)">🎶<br>Lyrics</button>
+        <button onclick="showTab('calendar', this)">📅<br>Calendar</button>
+        <button onclick="showTab('about', this)">ℹ️<br>About</button>
+    </nav>
+
+    <script>
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            if(lang === 'kikuyu') {
+                document.querySelectorAll('.lang-kikuyu').forEach(e => e.style.display = 'block');
+                document.querySelectorAll('.lang-english').forEach(e => e.style.display = 'none');
+                event.target.classList.add('active');
+            } else {
+                document.querySelectorAll('.lang-kikuyu').forEach(e => e.style.display = 'none');
+                document.querySelectorAll('.lang-english').forEach(e => e.style.display = 'block');
+                event.target.classList.add('active');
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
